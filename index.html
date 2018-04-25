@@ -12,28 +12,30 @@
     <div id="app"></div>
 
     <script type='text/babel'>
-      const name = 'Brayan';
-      const handle = '@brayanespinoza';
 
-      function NameComponent(props) {
-        return <h1>{props.name}</h1>
-      }
-
-      function HandleComponent(props) {
-        return <h3>{props.handle}</h3>
-      }
-
-      function App () {
+      function FriendList (props) {
         return (
-          <div id='container'>
-            <NameComponent name={name}/>
-            <HandleComponent handle={handle}/>
+          <ul>
+            {props.list.map((name)=>(
+              <li key= {name}>
+                {name}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      function App (props) {
+        const friends = ['Pedro', 'Luis', 'Marcos'];
+        return (
+          <div>
+            <FriendList list = {friends}/>
           </div>
         )
       }
 
       ReactDOM.render(
-        <App />,
+        <App name = "WORLD"/>,
         document.getElementById('app')
       );
     </script>

@@ -18,7 +18,8 @@
           <ul>
             {props.list.map((name)=>(
               <li key= {name}>
-                {name}
+                <span>{name}</span>
+                <button onClick = {()=> props.onRemoveFriend(name)}>Remove</button>
               </li>
             ))}
           </ul>
@@ -32,12 +33,28 @@
           this.state = {
             friends : ['Pedro', 'Luis', 'Marcos']
           }
+
+          this.handleRemoveFriend = this.handleRemoveFriend.bind(this);
+        }
+
+        handleAddFriend() {
+
+        }
+
+        handleRemoveFriend(name) {
+          this.setState((currentState)=>{
+            return{
+              friends: currentState.friends.filter((friend)=> friend !== name)
+            }
+          })
         }
 
         render() {
           return (
             <div>
-              <FriendList list = {this.state.friends}/>
+              <FriendList list = {this.state.friends}
+                onRemoveFriend = {this.handleRemoveFriend}
+              />
             </div>
           )
         }
@@ -45,7 +62,7 @@
 
 
       ReactDOM.render(
-        <App name = "WORLD"/>,
+        <App />,
         document.getElementById('app')
       );
     </script>

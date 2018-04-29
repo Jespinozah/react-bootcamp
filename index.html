@@ -72,6 +72,13 @@
                 onChange = {this.updateInput}
               />
               <button onClick = {this.handleAddFriend}>Submit</button>
+              <div>
+                <button onClick = {()=> this.setState({
+                  friends : []
+                })}>
+                  Clear All
+                </button>
+              </div>
               <FriendList list = {this.state.friends}
                 onRemoveFriend = {this.handleRemoveFriend}
               />
